@@ -4,7 +4,8 @@ import { useRouter } from "expo-router";
 import { ThemedView } from './components/ThemedView';
 import { ThemedText } from './components/ThemedText'; 
 import { ThemedButton } from './components/ThemedButton';
-import { ThemedTextInput } from './components/ThemedTextInput'; 
+import { ThemedTextInput } from './components/ThemedTextInput';  
+import * as Clipboard from 'expo-clipboard';
 import CryptoJS from 'crypto-js';  
 
 export default function Accounts() {
@@ -12,14 +13,21 @@ export default function Accounts() {
   const [accounts, setAccounts] = useState<any[]>([]); 
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredAccounts, setFilteredAccounts] = useState<any[]>([]);
-  const [selectedAccount, setSelectedAccount] = useState<any>(null);
+  const [selectedAccount, setSelectedAccount] = useState<any>(null); 
+  // Handle copy to clipboard
+  const [copiedText, setCopiedText] = useState('');
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync(decrypt(selectedAccount.password));
+  };
+  const fetchCopiedText = async () => {
+    const text = await Clipboard.getStringAsync();
+    setCopiedText(text);
+  };
   // Handle account click
   const [modalVisible, setModalVisible] = useState(false);
-  const handleAccountClick = (account: any) => {setSelectedAccount(account);
-    setModalVisible(true);};
+  const handleAccountClick = (account: any) => {setSelectedAccount(account); setModalVisible(true);};
   // Close modal
-  const closeModal = () => {setSelectedAccount(null);
-    setModalVisible(false);};
+  const closeModal = () => {setSelectedAccount(null); setModalVisible(false);};
   // Secret Key
   const [secretKey, setSecretKey] = useState('');
 
@@ -131,7 +139,7 @@ export default function Accounts() {
                 <ThemedText style={styles.modalText}>Date Created: {new Date(selectedAccount.create_date).toLocaleDateString()}</ThemedText>
                 {/* Container for options */}
                 <ThemedView style={styles.buttonContainer}>
-                  <ThemedButton onPress={closeModal} title="Copy" />
+                  <ThemedButton onPress={copyToClipboard} title="Copy Password" />
                   <ThemedButton onPress={closeModal} title="Close" />
                 </ThemedView>
               </ThemedView>
@@ -177,7 +185,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   modalTitle: {
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 30,
     textAlign: 'center',
