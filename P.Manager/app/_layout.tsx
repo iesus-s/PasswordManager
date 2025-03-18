@@ -1,5 +1,5 @@
 import { Stack, useRouter } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useColorScheme as useRNColorScheme } from "react-native";
