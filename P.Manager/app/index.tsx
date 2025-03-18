@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Alert } from "react-native";
 import { useRouter } from "expo-router";
-import authenticateWithFingerprint from "./utils/auth";
+import { authenticateWithFingerprint } from "./utils/auth";
 import { ThemedText } from "./components/ThemedText";
 import { ThemedView } from "./components/ThemedView";
 
@@ -12,7 +12,7 @@ export default function LoadScreen() {
     const authenticateAndNavigate = async () => {
       const result = await authenticateWithFingerprint(); 
 
-      if (result || !result) {
+      if (result) {
         setTimeout(() => {
           router.replace("/main"); // Navigate to the HomeScreen
         }, 1000);

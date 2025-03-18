@@ -1,4 +1,4 @@
-import { Stack, useRouter } from "expo-router";
+import { Stack } from "expo-router";
 import React, { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
@@ -8,8 +8,7 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
-  const router = useRouter();
+export default function RootLayout() { 
   const colorScheme = useRNColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("./assets/fonts/SpaceMono-Regular.ttf"),

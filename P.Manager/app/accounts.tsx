@@ -14,15 +14,10 @@ export default function Accounts() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredAccounts, setFilteredAccounts] = useState<any[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<any>(null); 
-  // Handle copy to clipboard
-  const [copiedText, setCopiedText] = useState('');
+  // Handle copy to clipboard 
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(decrypt(selectedAccount.password));
-  };
-  const fetchCopiedText = async () => {
-    const text = await Clipboard.getStringAsync();
-    setCopiedText(text);
-  };
+  }; 
   // Handle account click
   const [modalVisible, setModalVisible] = useState(false);
   const handleAccountClick = (account: any) => {setSelectedAccount(account); setModalVisible(true);};
@@ -64,7 +59,7 @@ export default function Accounts() {
 
       return decryptedString;
     } catch (error) { 
-      return 'Not Available';
+      return '(Encrypted)';
     }
   };
 
