@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState } from 'react'; 
 import { useRouter } from "expo-router";
 import { StyleSheet, Modal } from 'react-native'; 
 import { generatePassword } from './utils/passwordUtils';   
 import { ThemedText } from "./components/ThemedText";
 import ThemedButton from './components/ThemedButton';
 import ThemedView from './components/ThemedView';
-import { ThemedTextInput } from './components/ThemedTextInput'; 
-import { authenticateWithFingerprint } from './utils/auth';
+import { ThemedTextInput } from './components/ThemedTextInput';  
 
 export default function App() { 
   // Generate router constant
@@ -44,7 +42,7 @@ export default function App() {
     }
   
     try {
-      const response = await fetch('http://192.168.5.18:9000/api/accounts/', {
+      const response = await fetch('http://192.168.1.241:8080/api/accounts/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ account, username, email, password }),

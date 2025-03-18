@@ -4,8 +4,7 @@ import { useRouter } from "expo-router";
 import { ThemedView } from './components/ThemedView';
 import { ThemedText } from './components/ThemedText'; 
 import { ThemedButton } from './components/ThemedButton';
-import { ThemedTextInput } from './components/ThemedTextInput';
-import { SearchBar } from 'react-native-screens';
+import { ThemedTextInput } from './components/ThemedTextInput';  
 
 export default function Accounts() {
   const router = useRouter();
@@ -17,7 +16,7 @@ export default function Accounts() {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const response = await fetch('http://192.168.5.18:9000/api/accounts');
+        const response = await fetch('http://192.168.1.241:8080/api/accounts');
         const data = await response.json();  
         console.log(searchQuery); 
 
