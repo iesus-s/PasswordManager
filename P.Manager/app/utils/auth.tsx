@@ -1,6 +1,6 @@
 import * as LocalAuthentication from 'expo-local-authentication';
 
-export const authenticateWithFingerprint = async () => { 
+const authenticateWithFingerprint = async () => { 
     const compatible = await LocalAuthentication.hasHardwareAsync();  
     if (!compatible) {
         console.log("Device does not support biometric authentication");
@@ -21,3 +21,5 @@ export const authenticateWithFingerprint = async () => {
 
     return result;  
 };
+
+export default authenticateWithFingerprint;
