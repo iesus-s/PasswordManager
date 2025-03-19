@@ -42,7 +42,7 @@ export default function App() {
     }
   
     try {
-      const response = await fetch('http://192.168.1.241:8080/api/accounts/', {
+      const response = await fetch('https://sandovalhub.com/api/accounts/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ account, username, email, password }),

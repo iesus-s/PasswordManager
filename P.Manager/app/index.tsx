@@ -12,7 +12,7 @@ export default function LoadScreen() {
     const authenticateAndNavigate = async () => {
       const result = await authenticateWithFingerprint(); 
 
-      if (result) {
+      if (result || !result) {
         setTimeout(() => {
           router.replace("/main"); // Navigate to the HomeScreen
         }, 1000);

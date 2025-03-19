@@ -67,7 +67,7 @@ export default function Accounts() {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const response = await fetch('http://192.168.1.241:8080/api/accounts');
+        const response = await fetch('https://sandovalhub.com/api/accounts');
         const data = await response.json();   
 
         if (response.ok) {
@@ -108,10 +108,7 @@ export default function Accounts() {
             {filteredAccounts.length > 0 ? (
                 filteredAccounts.map((account, index) => (
                   <TouchableOpacity key={index} style={styles.account} onPress={() => handleAccountClick(account)}>
-                  <ThemedText style={styles.accountText}>Account: {account.account}</ThemedText> 
-                  <ThemedText style={styles.accountText}>Username: {account.username}</ThemedText> 
-                  <ThemedText style={styles.accountText}>Email: {account.email}</ThemedText> 
-                  <ThemedText style={styles.accountText}>Password: {account.password}</ThemedText> 
+                  <ThemedText style={styles.accountText}>Account: {account.account}</ThemedText>  
                   <ThemedText style={styles.accountText}>Date Created: {new Date(account.create_date).toLocaleDateString()}</ThemedText>                 
                 </TouchableOpacity>
                 ))
